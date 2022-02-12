@@ -1,0 +1,10 @@
+target("launchmymc")
+    set_kind("shared")
+    add_files("src/**.cpp")
+    add_headerfiles("src/**.h")
+    add_includedirs("include", { public = true })
+
+target("test")
+    set_kind("binary")
+    add_files("test/**.cpp")
+    add_deps("launchmymc")    
