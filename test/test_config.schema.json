@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "LaunchMyMinecraft test config",
+  "properties": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
+        },
+        "access_token": {
+          "type": "string"
+        },
+        "client_token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_name",
+        "uuid",
+        "access_token",
+        "client_token"
+      ]
+    },
+    "profiles": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "vanilla",
+                "forge",
+                "fabric"
+              ]
+            },
+            "version": {
+              "type": "string"
+            },
+            "snapshot": {
+              "type": "boolean",
+              "default": false
+            },
+            "mod_loader_version": {
+              "type": "string"
+            },
+            "directory": {
+              "type": "string"
+            },
+            "mods": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "oneOf": [
+                  {
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "file"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "sha1": {
+                        "type": "string"
+                      },
+                      "size": {
+                        "type": "integer"
+                      },
+                      "download_url": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name",
+                      "sha1",
+                      "size",
+                      "download_url"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "curse_forge"
+                      },
+                      "project_id": {
+                        "type": "integer"
+                      },
+                      "file_id": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "project_id",
+                      "file_id"
+                    ]
+                  }
+                ],
+                "additionalProperties": false
+              }
+            },
+            "download": {
+              "type": "boolean",
+              "default": true,
+              "description": "Automatically download the game and mods"
+            },
+            "java": {
+              "type": "string",
+              "description": "Path of the java executable"
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "type": {
+                    "enum": [
+                      "forge",
+                      "fabric"
+                    ]
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "mod_loader_version"
+                ]
+              }
+            }
+          ],
+          "required": [
+            "name",
+            "type",
+            "version"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "user",
+    "profiles"
+  ]
+}

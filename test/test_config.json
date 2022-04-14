@@ -1,0 +1,53 @@
+{
+  "$schema": "./test_config.schema.json",
+  "user": {
+    "user_name": "a",
+    "uuid": "d24a8b62-f3bc-4198-9550-85bd340c88d2",
+    "access_token": "4aa9e89c-a6b3-4bbe-925f-5180a3990e69",
+    "client_token": "26336430-ea75-44fe-af69-06920995e818"
+  },
+  "profiles": {
+    "vanilla_18": {
+      "name": "vanilla",
+      "type": "vanilla",
+      "version": "1.18.2"
+    },
+    "fabric_18": {
+      "name": "fabric",
+      "type": "fabric",
+      "version": "1.18.2",
+      "mod_loader_version": "0.13.3",
+      "mods": [
+        {
+          "type": "curse_forge",
+          "project_id": 308702,
+          "file_id": 3745497
+        }
+      ]
+    },
+    "forge_16": {
+      "name": "Minecraft Forge 1.16.5",
+      "type": "forge",
+      "version": "1.16.5",
+      "snapshot": false,
+      "mod_loader_version": "36.2.20",
+      "directory": "forge",
+      "mods": [
+        {
+          "type": "file",
+          "name": "Mekanism-1.16.3-10.0.12.437.jar",
+          "sha1": "62a84d8e3d9500685a4b14f19beda13da1a0a678",
+          "size": 9753587,
+          "download_url": "https://media.forgecdn.net/files/3083/468/Mekanism-1.16.3-10.0.12.437.jar"
+        },
+        {
+          "type": "curse_forge",
+          "project_id": 228756,
+          "file_id": 3068784
+        }
+      ],
+      "download": true,
+      "java": "java"
+    }
+  }
+}
