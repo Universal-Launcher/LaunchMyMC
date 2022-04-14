@@ -1,0 +1,11 @@
+# XMake
+.xmake/
+build/
+CMakeLists.txt
+compile_commands.json
+
+# Clion
+.idea
+
+# MacOS
+.DS_Store
